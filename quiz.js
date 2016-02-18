@@ -26,6 +26,8 @@ function userInput() {
   }
   console.log("treeObject", treeObject);
 }
+
+// buttons//
 button.addEventListener("click", userInput);
   // Once the user enters in a number, and a character, the user can either then just press the enter key (as long as the cursor is in one of the input fields), or click a button that is labeled "Grow your tree" and the tree should be shown in the console.
 height.addEventListener("keydown", function(){
