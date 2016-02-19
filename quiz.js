@@ -4,28 +4,41 @@ var character = document.getElementById("character");
 var button = document.getElementById("button");
 
 function tree(treeObject) {
-  for (var i = 1; i < treeObject.height; i++) {
-    // removes space between characters
+  for (var i = 1; i <= treeObject.height; i++) {
     var space = treeObject.height - i;
     var charNum = 2*i -1;
     console.log(" ".repeat(space) + treeObject.character.repeat(charNum));
   }
 }
+
   // making sure user inputs in both fields or they get an alert
 function userInput() {
-  if (height.value && character.value) {
-    console.log("height", height.value);
-    console.log("character", character.value);
-    var treeObject = {
-      height: height.value,
-      character: character.value
-    }
-    tree(treeObject);
-  } else {
-    alert("enter a value");
-  }
-  console.log("treeObject", treeObject);
+  var characterReady = false, numberReady = false;
+
+  if (!isNaN(height.value) && height.value.length >= 1){
+    numberReady = true;
+  } else {
+    alert("enter a number")
+    numberReady = false;
+  }
+
+  if (character.value.length == 1){
+    characterReady = true;
+  } else{
+    characterReady = false;
+    alert("provide only one character")
+  }
+
+  treeObject = {
+    height: height.value,
+    character: character.value
+  }
+
+  if (characterReady && numberReady) {
+    tree(treeObject);
+  }
 }
+
 
 // buttons//
 button.addEventListener("click", userInput);
